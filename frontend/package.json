@@ -74,11 +74,6 @@
     "vitest": "^3.0.9"
   },
   "overrides": {
-    "@aws-amplify/ui": {
-      "xstate": "4.38.3"
-    },
-    "@aws-amplify/ui-react": {
-      "xstate": "4.38.3"
-    }
+    "xstate": "4.38.3"
   }
 }
