@@ -1,10 +1,31 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Obsługa __dirname dla projektów ESM (Type: Module)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve: { alias: { './runtimeConfig': './runtimeConfig.browser' } },
+  resolve: {
+    alias: [
+      {
+        find: './runtimeConfig',
+        replacement: './runtimeConfig.browser',
+      },
+      {
+        find: /^xstate$/,
+        replacement: path.resolve(__dirname, 'node_modules/xstate'),
+      },
+      {
+        find: /^@xstate\/react$/,
+        replacement: path.resolve(__dirname, 'node_modules/@xstate/react'),
+      },
+    ],
+  },
   plugins: [
     react(),
     VitePWA({
@@ -75,5 +96,9 @@ export default defineConfig({
       },
     }),
   ],
+  // Wymuszamy na Vite, by nie optymalizował Amplify razem z Twoim XState v5
+  optimizeDeps: {
+    exclude: ['@aws-amplify/ui', '@aws-amplify/ui-react'],
+  },
   server: { host: true },
 });
