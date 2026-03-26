@@ -16,7 +16,7 @@
     "@headlessui/react": "^1.7.15",
     "@ladle/react": "^5.0.1",
     "@react-icons/all-files": "^4.1.0",
-    "@xstate/react": "^3.2.2",
+    "@xstate/react": "^4.1.1",
     "aws-amplify": "^6.16.2",
     "axios": "^1.12.0",
     "copy-to-clipboard": "^3.3.3",
@@ -46,7 +46,7 @@
     "ulid": "^2.3.0",
     "use-debounce": "^10.0.4",
     "use-immer": "^0.9.0",
-    "xstate": "^4.38.3",
+    "xstate": "^5.13.0",
     "zustand": "^4.3.9"
   },
   "devDependencies": {
@@ -72,5 +72,15 @@
     "vite": "^6.4.1",
     "vite-plugin-pwa": "^0.21.1",
     "vitest": "^3.0.9"
+  },
+  "overrides": {
+    "@aws-amplify/ui-react": {
+      "@xstate/react": "3.2.2",
+      "xstate": "4.38.3"
+    },
+    "@aws-amplify/ui-react-core": {
+      "@xstate/react": "3.2.2",
+      "xstate": "4.38.3"
+    }
   }
 }

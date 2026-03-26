@@ -107,14 +107,14 @@ const useChatState = create<{
     },
     chats: {},
     setMessages: (id: string, messageMap: MessageMap) => {
-      set((state : any) => ({
+      set((state) => ({
         chats: produce(state.chats, (draft) => {
           draft[id] = messageMap;
         }),
       }));
     },
     copyMessages: (fromId: string, toId: string) => {
-      set((state : any) => ({
+      set((state) => ({
         chats: produce(state.chats, (draft) => {
           draft[toId] = JSON.parse(JSON.stringify(draft[fromId]));
         }),
@@ -167,7 +167,7 @@ const useChatState = create<{
       }));
     },
     removeMessage: (id: string, messageId: string) => {
-      set((state : any) => ({
+      set((state) => ({
         chats: produce(state.chats, (draft) => {
           const childrenIds = [...draft[id][messageId].children];
 
